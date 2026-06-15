@@ -12,6 +12,7 @@ module.exports = {
   async execute(interaction) {
     requireServerId();
     const linesToShow = interaction.options.getInteger("lines") ?? 15;
+    console.log(`[COMMAND] /console executed by ${interaction.user.tag} (lines: ${linesToShow})`);
 
     const downloadData = await ptero("GET", `/servers/${process.env.PTERO_SERVER_ID}/files/download?file=logs/latest.log`);
     const downloadUrl = downloadData.attributes.url;

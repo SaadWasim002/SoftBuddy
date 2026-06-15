@@ -7,6 +7,7 @@ module.exports = {
     .setDescription("Force kill the Minecraft server"),
 
   async execute(interaction) {
+    console.log(`[COMMAND] /kill executed by ${interaction.user.tag}`);
     requireServerId();
     await sendPowerAction("kill");
     const embed = new EmbedBuilder().setColor(0x2f3136).setDescription("💀 **Kill** command sent to the server. The process was force-stopped.");

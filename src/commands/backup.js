@@ -17,6 +17,7 @@ module.exports = {
   async execute(interaction) {
     requireServerId();
     const subcommand = interaction.options.getSubcommand();
+    console.log(`[COMMAND] /backup ${subcommand} executed by ${interaction.user.tag}`);
 
     if (subcommand === "list") {
       const backupData = await ptero("GET", `/servers/${process.env.PTERO_SERVER_ID}/backups`);

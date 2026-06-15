@@ -12,6 +12,7 @@ module.exports = {
   async execute(interaction) {
     requireServerId();
     const command = interaction.options.getString("command");
+    console.log(`[COMMAND] /cmd executed by ${interaction.user.tag} (command: ${command})`);
     await ptero("POST", `/servers/${process.env.PTERO_SERVER_ID}/command`, { command });
     const embed = new EmbedBuilder().setColor(0x5865F2).setDescription(`✅ Ran command: \`${command}\``);
     await interaction.editReply({ embeds: [embed] });

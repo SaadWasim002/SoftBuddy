@@ -7,6 +7,7 @@ module.exports = {
     .setDescription("Restart the Minecraft server"),
 
   async execute(interaction) {
+    console.log(`[COMMAND] /restart executed by ${interaction.user.tag}`);
     requireServerId();
     await sendPowerAction("restart");
     const embed = new EmbedBuilder().setColor(0xFEE75C).setDescription("🔄 **Restart** command sent to the server.");

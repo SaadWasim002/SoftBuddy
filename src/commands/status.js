@@ -7,6 +7,7 @@ module.exports = {
     .setDescription("Get the Minecraft server status, players, and resource usage"),
 
   async execute(interaction) {
+    console.log(`[COMMAND] /status executed by ${interaction.user.tag}`);
     requireServerId();
     const [resources, details] = await Promise.all([
       ptero("GET", `/servers/${process.env.PTERO_SERVER_ID}/resources`),

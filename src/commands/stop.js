@@ -7,6 +7,7 @@ module.exports = {
     .setDescription("Stop the Minecraft server"),
 
   async execute(interaction) {
+    console.log(`[COMMAND] /stop executed by ${interaction.user.tag}`);
     requireServerId();
     await sendPowerAction("stop");
     const embed = new EmbedBuilder().setColor(0xED4245).setDescription("🛑 **Stop** command sent to the server.");

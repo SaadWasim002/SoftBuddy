@@ -7,6 +7,7 @@ module.exports = {
     .setDescription("Start the Minecraft server"),
 
   async execute(interaction) {
+    console.log(`[COMMAND] /start executed by ${interaction.user.tag}`);
     requireServerId();
     await sendPowerAction("start");
     const embed = new EmbedBuilder().setColor(0x57F287).setDescription("✅ **Start** command sent to the server.");

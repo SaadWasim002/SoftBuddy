@@ -7,6 +7,7 @@ module.exports = {
     .setDescription("List all servers your API key can access"),
 
   async execute(interaction) {
+    console.log(`[COMMAND] /servers executed by ${interaction.user.tag}`);
     const data = await ptero("GET", "");
     const serverList = data.data;
 
