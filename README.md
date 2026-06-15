@@ -54,7 +54,13 @@ cp .env.example .env # If you haven't already
 
 ### 5. Install & Run
 ```bash
+# Install dependencies
 npm install
+
+# Deploy slash commands (only need to run this once, or when commands change)
+npm run deploy
+
+# Start the bot
 npm start
 ```
 

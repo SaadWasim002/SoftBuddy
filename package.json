@@ -1,5 +1,5 @@
 {
-  "name": "mcss-discord-bot",
+  "name": "pterodactyl-discord-bot",
   "version": "1.0.0",
   "description": "A Discord bot to control a Pterodactyl-hosted game server",
   "main": "bot.js",
