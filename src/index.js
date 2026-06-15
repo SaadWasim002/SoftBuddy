@@ -37,13 +37,21 @@ client.on("interactionCreate", async interaction => {
   const command = client.commands.get(interaction.commandName);
   if (!command) return;
 
-  await interaction.deferReply();
-
   try {
+    await interaction.deferReply();
     await command.execute(interaction);
   } catch (error) {
     console.error(`[ERROR] /${interaction.commandName}:`, error.message);
-    await interaction.editReply({ content: `❌ Error: \`${error.message}\``, ephemeral: true });
+    
+    try {
+      if (interaction.replied || interaction.deferred) {
+        await interaction.editReply({ content: `❌ Error: \`${error.message}\`` });
+      } else {
+        await interaction.reply({ content: `❌ Error: \`${error.message}\``, ephemeral: true });
+      }
+    } catch (e) {
+      // Ignore errors that occur while trying to send the error message (like 10062)
+    }
   }
 });
 
