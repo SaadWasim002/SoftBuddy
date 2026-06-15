@@ -1,5 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
+const http = require("node:http");
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
 require("dotenv").config({ path: path.join(__dirname, '..', '.env')});
 
@@ -47,3 +48,12 @@ client.on("interactionCreate", async interaction => {
 });
 
 client.login(DISCORD_TOKEN);
+
+// Keep-alive dummy web server for Render's Web Service health checks
+const PORT = process.env.PORT || 3000;
+http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Discord bot is running!');
+}).listen(PORT, () => {
+  console.log(`🌐 Dummy web server listening on port ${PORT} for Render health checks.`);
+});
